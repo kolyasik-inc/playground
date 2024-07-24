@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Shell with jQuery Terminal</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="jquery.terminal.js"></script>
+</head>
+<body>
+    <div id="terminal"></div>
+    <script>
+        $('#terminal').terminal(function(command, term) {
+            try {
+                const result = eval(command);
+                term.echo(result);
+            } catch (error) {
+                term.error(error);
+            }
+        }, {
+            greetings: 'Welcome to the JavaScript shell!'
+        });
+    </script>
+</body>
+</html>

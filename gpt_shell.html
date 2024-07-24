@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive JavaScript Shell</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    #shell {
+      width: 100%;
+      height: 300px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      overflow-y: scroll;
+    }
+    #input {
+      width: 100%;
+      height: 50px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Interactive JavaScript Shell</h1>
+  
+  <div id="shell"></div>
+  
+  <textarea id="input" placeholder="Type JavaScript code here..."></textarea>
+
+  <button onclick="runCode()">Run</button>
+
+  <script>
+    function runCode() {
+      var input = document.getElementById('input').value;
+      var outputDiv = document.getElementById('shell');
+      try {
+        var result = eval(input);
+        outputDiv.innerHTML += '<p><strong>Input:</strong> ' + input + '</p>';
+        outputDiv.innerHTML += '<p><strong>Output:</strong> ' + result + '</p>';
+      } catch (e) {
+        outputDiv.innerHTML += '<p style="color: red;"><strong>Error:</strong> ' + e.message + '</p>';
+      }
+      document.getElementById('input').value = '';
+    }
+  </script>
+</body>
+</html>
